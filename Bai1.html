@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let arr = prompt("Nhập các phần tử của mảng, cách nhau bằng dấu phẩy:").split(",");
+
+    function checkArrayLength(arr) {
+        if (arr.length > 50) {
+            alert("Số lượng phần tử trong mảng không được vượt quá 50. Vui lòng nhập lại.");
+            return false;
+        }
+        return true;
+    }
+
+    if (checkArrayLength(arr)) {
+        function calculateAverageDivisibleByThree(arr) {
+            // Lọc các số chia hết cho 3
+            const divisibleByThree = arr.filter(num => num % 3 === 0);
+            // Tính tổng và số lượng các số chia hết cho 3
+            const sum = divisibleByThree.reduce((acc, num) => acc + parseInt(num), 0);
+            const count = divisibleByThree.length;
+            // Tính trung bình cộng
+            const average = count > 0 ? sum / count : 0; // Tránh chia cho 0
+            return average;
+        }
+
+        const average = calculateAverageDivisibleByThree(arr);
+        console.log(arr);
+        console.log("Trung bình cộng các số chia hết cho 3 là:", average);
+    }
+
+</script>
+</html>

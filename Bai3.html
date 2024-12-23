@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const monthYear = prompt("Nhập tháng/năm (MM/yyyy):");
+
+    function ktradinhdang(monthYear) {
+        const monthYearRegex = /^(0[1-9]|1[0-2])\/\d{4}$/;
+        if (!monthYearRegex.test(monthYear)) {
+            alert("Định dạng tháng/năm không hợp lệ. Vui lòng nhập lại.");
+            return false;
+        }
+        const [month, year] = monthYear.split("/");
+        if (parseInt(month) < 1 || parseInt(month) > 12) {
+            alert("Tháng phải nằm trong khoảng 1-12. Vui lòng nhập lại.");
+            return false;
+        }
+        return true;
+    }
+
+    function isLeapYear(year) {
+        if (year % 400 === 0 || (year % 4 === 0 && year % 100 !== 0)) {
+            return true;
+        }
+        return false;
+    }
+
+    if (ktradinhdang(monthYear)) {
+        const [month, year] = monthYear.split("/");
+        const daysInMonth = new Date(parseInt(year), parseInt(month), 0).getDate();
+        if (isLeapYear(parseInt(year))) {
+            if (parseInt(month) === 2) {
+                alert(`Tháng ${month}/${year} có 29 ngày.`);
+            } else {
+                alert(`Tháng ${month}/${year} có ${daysInMonth} ngày.`);
+            }
+        } else {
+            alert(`Tháng ${month}/${year} có ${daysInMonth} ngày.`);
+        }
+    }
+</script>
+</html>

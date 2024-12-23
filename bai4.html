@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>QuanLyCongNhan</title>
+  <style>
+    h1{
+      text-align: center;
+    }
+    table {
+      width: 80%;
+      margin: auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border: 1px solid #000;
+    }
+    td {
+      background-color: aliceblue;
+    }
+    th {
+      background-color: greenyellow;
+    }
+  </style>
+</head>
+<body>
+<h1>Quản lý công nhân</h1>
+<table id="Table">
+  <thead>
+  <tr>
+    <th>STT</th>
+    <th>Họ và tên</th>
+    <th>Ngày sinh</th>
+    <th>Địa chỉ</th>
+    <th>Lương</th>
+    <th>Chức vụ</th>
+  </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<script>
+  let Workers = [];
+  class Worker {
+    constructor(code, name, dob, address, salary, position) {
+      this.code = code;
+      this.name = name;
+      this.dob = dob;
+      this.address = address;
+      this.salary = salary;
+      this.position = position;
+    }
+  }
+  Workers.push({
+    code: '01',
+    name: 'Nguyen Minh Hieu',
+    dob: '11/07/2004',
+    address: 'Hanoi',
+    salary: '200',
+    position: 'Nhanvien',
+  });
+  Workers.push(new Worker('02', 'Tran Thanh Tung', '18/7/2002', 'Hanoi', '300', 'NhanVien'));
+  Workers.push(new Worker('03', 'Dinh nguyen Do', '28/2/2000', 'Hanoi', '300', 'NhanVien'));
+  function showWorker(worker) {
+    return `<tr>
+            <td>${worker.code}</td>
+            <td>${worker.name}</td>
+            <td>${worker.dob}</td>
+            <td>${worker.address}</td>
+            <td>${worker.salary}</td>
+            <td>${worker.position}</td>
+        </tr>`;
+  }
+  const tableBody = document.getElementById('Table').getElementsByTagName('tbody')[0];
+  Workers.forEach(worker => {
+    tableBody.innerHTML += showWorker(worker);
+  });
+</script>
+</body>
+</html>
